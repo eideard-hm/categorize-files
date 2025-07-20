@@ -18,6 +18,7 @@
   "description": "Document Classifier Server",
   "devDependencies": {
     "@types/express": "5.0.3",
+    "@types/multer": "2.0.0",
     "@types/node": "24.0.15",
     "nodemon": "3.1.10",
     "pino-pretty": "13.0.0",
