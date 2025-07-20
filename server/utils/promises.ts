@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { logger } from '../config/logger';
 
 export const catchError = async <T>(promise: Promise<T>): Promise<[T | null, any]>  => {
     try {
