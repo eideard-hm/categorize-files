@@ -1,16 +1,17 @@
 import express from 'express';
+import cors from 'cors';
 
 import { config } from '../config/envs';
 import { logger } from '../config/logger';
 import apiRouter from '../routes/api.route';
 
 const app = express();
-app.use(express.json());
+app.use(cors());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
 export const main = async () => {
-  app.get('/ping', (_, res) => {
-    res.json({ pong: 'pong' });
-  });
+  app.get('/health', (_, res) => res.status(200).json({ status: 'ok' }));
 
   // Use routes
   app.use('/api', apiRouter);

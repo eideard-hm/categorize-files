@@ -1,9 +1,27 @@
 import Tesseract from 'tesseract.js';
 
 import { logger } from '../config/logger';
+import type { CategoryForService, IDocumentHandler } from '../types/document-handle';
 import { catchError } from '../utils/promises';
 
-class OCRService {
+class OCRService implements IDocumentHandler {
+  classifyText(text: string, categories: string[]): Promise<string> {
+    throw new Error('Method not implemented.');
+  }
+  classifyImage(
+    file: Express.Multer.File,
+    categories: CategoryForService[]
+  ): Promise<CategoryForService> {
+    throw new Error('Method not implemented.');
+  }
+
+  classifyPDF(
+    file: Express.Multer.File,
+    categories: CategoryForService[]
+  ): Promise<CategoryForService> {
+    throw new Error('Method not implemented.');
+  }
+
   async extractTextFromImage(imagePath: string): Promise<string> {
     const [data, error] = await catchError(
       Tesseract.recognize(imagePath, 'spa', {

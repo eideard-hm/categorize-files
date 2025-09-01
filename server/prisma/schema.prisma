@@ -25,6 +25,8 @@ model User {
 model Category {
   id        Int       @id @default(autoincrement())
   name      String    @unique
+  folderName String    @unique
+  createdAt DateTime  @default(now())
   documents Document[]
 }
 
